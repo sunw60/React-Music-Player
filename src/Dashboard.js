@@ -36,12 +36,7 @@ export default function Dashboard({ token }) {
     const [currentPlaylist, setCurrentPlaylist] = useState()
     const [playlistTracks, setPlaylistTracks] = useState([])
     const [state, setState] = useState({})
-    // console.log(searchResults)
-    // console.log(token)
-    // console.log(currentPlaylist)
-    // console.log(currentlyPlaying)
-    // console.log(playlistTracks)
-    // console.log(user)
+
 
     
 
