@@ -1,0 +1,8 @@
+.player {
+    display: flex;
+    justify-content: space-between;
+    bottom: 0;
+    position: absolute;
+    background-color: #282828;
+    width: 100%;
+}

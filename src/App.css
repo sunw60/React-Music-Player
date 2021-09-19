@@ -24,6 +24,9 @@
   color: white;
 }
 
+.dashboard {
+  background-color: black;
+}
 .App-link {
   color: #61dafb;
 }

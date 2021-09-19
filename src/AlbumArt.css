@@ -1,0 +1,19 @@
+.albumart {
+    border-width: 0px;
+    align-items: center;
+    position:fixed;
+    display:flex;
+    flex-direction: column;
+}
+
+.albumart > strong{
+    font-size: 30px;
+    overflow-x: scroll;
+    color: white;
+    text-align: center;
+}
+
+.albumart > p{
+    font-size: 20px;
+    color: gray;
+}
