@@ -5,8 +5,8 @@ import './Login.css'
 export const authEndpoint = 'https://accounts.spotify.com/authorize'
 
 const redirect_uri = 'http://localhost:3000'
-const client_id = 'f84856dbbb614c11a86044b6586840b7'
-const client_secret = '648582736fda4d6ba579c4f328d50002'
+const client_id = 'clientid'
+const client_secret = 'clientsecret'
 
 const scopes = [
     "streaming",
