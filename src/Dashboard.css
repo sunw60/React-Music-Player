@@ -1,3 +1,4 @@
+
 input#search {
     background-image: url('http://www.clker.com/cliparts/z/1/T/u/9/2/search-icon-hi.png');
     background-size:contain;
@@ -65,32 +66,63 @@ position: relative;
     overflow-y: scroll;
     overflow-x: scroll;
 }
+.margintop {
+    margin-top: 15px;
+    display: flex;
+    align-items: center;
+}
+.margintop > strong {
+    padding-left: 4px;
+}
 .searchbar {
-    width: 500px;
+    min-width: 500px;
     justify-content: right;
-    margin-left: 50px;
+    margin-left: 5px;
+    border-radius: 30px;
+    border-color: transparent;
+    
+}
+input#search {
+    text-indent: 30px;
+    transition: 0.3s;
+}
+input[type=text]:focus {
+    outline:none;
+    text-indent: 3px;
 }
 
+input:focus::placeholder {
+    color:transparent;
+}
 .userpfp {
     height: 70px;
+    color: white;
+}
+.username > h4 {
+    color: white;
 }
 
 .lefthalf{
     flex: 0.5;
 }
 
-
-
 .righthalf{
 flex: 0.5;
 overflow-y: scroll;
 overflow-x: scroll;
 align-items: center;
-padding-top: 15px;
-padding-left: 95px;
-padding-right: 60px;
+padding-top: 90px;
+padding-left: 120px;
+padding-right: 50px;
 
 }
+
+.playlisticonandname{
+    display: flex;
+   
+}
+
+
 /* .form-control{
 -webkit-border-radius: 50px;
 -moz-border-radius: 50px;

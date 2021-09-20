@@ -37,10 +37,6 @@ export default function Dashboard({ token }) {
     const [playlistTracks, setPlaylistTracks] = useState([])
     const [state, setState] = useState({})
 
-
-    
-
-    
     const chooseTrack = (track) => {
 
         setCurrentlyPlaying(track)
@@ -50,15 +46,13 @@ export default function Dashboard({ token }) {
         
     }
 
-    // const choosePlaylistTrack = (track) => {
-    //     setCurrentlyPlaying(track)
-    //     playlistTracks.map(track => {
-    //         spotifyApi.queue(track)
-    //     })
-    //     setSearch('')
-    //     setLyrics('')
-    //     setPlaylistTracks([])
-    // }
+    const choosePlaylistTrack = (track, playlist) => {
+        setCurrentlyPlaying(track)
+        spotifyApi.play(currentPlaylist);
+        setSearch('')
+        setLyrics('')
+        setPlaylistTracks([])
+    }
 
     const choosePlaylist = (playlist) => {
         setCurrentPlaylist(playlist)
@@ -81,7 +75,7 @@ export default function Dashboard({ token }) {
         return () => {
         
         setPlaylistTracks([])
-        setCurrentPlaylist('')
+        
         }
     }, [currentlyPlaying])
 //useEffect to set access token
@@ -107,7 +101,7 @@ export default function Dashboard({ token }) {
        if (!token) return
 
        spotifyApi.getPlaylistTracks(currentPlaylist).then(res =>{
-          // console.log(res)
+          console.log(res)
            setPlaylistTracks(res.items.map(item => {
                const albumImageSmall = 
                 item.track.album.images[0]
@@ -146,8 +140,8 @@ export default function Dashboard({ token }) {
         spotifyApi.searchTracks(search).then(res =>{
           // console.log(res.tracks.items)
             setSearchResults(res.tracks.items.map(track => {
-                const albumImageSmall = track.album.images[2]
-                const albumImageLarge = track.album.images[1]
+                const albumImageSmall = track.album.images[0]
+                const albumImageLarge = track.album.images[2]
                  if (albumImageSmall.url) {
                     return {
                         artist: track.artists[0].name,
@@ -181,18 +175,22 @@ export default function Dashboard({ token }) {
                         </div>
                     </div>
 
-                    <div style={{"flex": 0.8}}>
+                    <div className = "username" style={{"flex": 0.8}}>
                         <h4>{user?.display_name}</h4>
                     </div>
                     
-                    <SidebarComponent option="Home" Icon={HomeIcon} />
+                    {/* <SidebarComponent option="Home" Icon={HomeIcon} />
                     <SidebarComponent option="Search" Icon = {SearchIcon} />
-                    <SidebarComponent option="My Library" Icon={LibraryMusicIcon} />
-                    <br />
-
-                    <p className = "sidebarplaylists"> Playlists</p>
-                    <hr />
+                    <SidebarComponent option="My Library" */}
                     
+                    <div className = "margintop">
+                        <LibraryMusicIcon />
+                        <strong className = "sidebarplaylists"> Playlists</strong>
+                        
+                    </div>
+                    
+                    <hr />
+                
                 </h1>
                 <div style ={{overflowY: "auto"}}>
                 {playlists?.items?.map(playlist => (
@@ -209,15 +207,18 @@ export default function Dashboard({ token }) {
         
             <div className="bodyright">
                 <div className = "lefthalf">
-                        <div className="searchbar mx-2">
-                    <Form.Control className="form-control"
-                        type="search"
+                    <div className="d-flex">
+                    <input className= "searchbar"
+                        type="text"
+                        id="search"
+                        name="search"
                         //add magnifying glass
-                        placeholder="Search For Songs, Artists, etc."
+                        placeholder= "Search For Songs, Artists, etc."
                         value={search}
                         onChange={e => setSearch(e.target.value)}
-                        />
-                        </div>
+                       />
+                    </div>
+                    
                     {/* </FloatingLabel> */}
                     <div className="flex-grow-1 my-2" style={{ overflowY: "auto" }}>
                         {searchResults.map(track => (
@@ -228,7 +229,7 @@ export default function Dashboard({ token }) {
                     <div className="flex-grow-1 my-2" style={{ overflowY: "auto" }}>
                         {playlistTracks.map(track => (
                             <PlaylistTrack track = { track } uri = { track.playlistTrackUri }
-                            key = { track.uri } chooseTrack={chooseTrack}/>
+                            key = { track.uri } choosePlaylistTrack={choosePlaylistTrack}/>
                         ))}
                         </div>
 
@@ -250,7 +251,7 @@ export default function Dashboard({ token }) {
                     )}
                     </div>
                 </div>
-                {currentlyPlaying.length != 0 && (
+                {currentlyPlaying.length !== 0 && (
                 <div className="righthalf">
                     {<AlbumArt track = {currentlyPlaying}/>}
                 </div>

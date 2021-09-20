@@ -1,9 +1,8 @@
 import React from 'react'
 
-const PlaylistTrack = ({track, uri, chooseTrack}) => {
+const PlaylistTrack = ({ track, uri, choosePlaylistTrack }) => {
      const playSong = () => {
-       chooseTrack(track)
-
+       choosePlaylistTrack(track)
     } 
     return (
         <div className="d-flex m-2 align-items-center" style={{ cursor: "pointer"}} onClick={ playSong }>

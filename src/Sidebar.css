@@ -6,7 +6,8 @@
     padding-left: 10px;
     padding-right: 10px;
     /* //max-width: 73px; */
-    min-width: 230px;
+    min-width: 70px;
+    max-width: 230px;
     overflow-y: scroll;
     height: 100vh;
     color: rgb(187, 185, 185);
@@ -16,6 +17,7 @@
 
 .sidebarplaylists{
     font-size: 20px;
+    padding-left: 10px;
     color: rgb(187, 185, 185);
 }
 
@@ -25,7 +27,7 @@
     align-items: center;
 }
 
-.userinfo > h4 {
-    margin-left: 10px;
+.sidebar > h4{
+
     color: teal
 }

@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { Container } from 'react-bootstrap';
+import './Login.css'
 
 export const authEndpoint = 'https://accounts.spotify.com/authorize'
 
@@ -38,11 +39,12 @@ export const getToken = () => {
 //displaying login button
 export default function Login() {
     return (
-    <Container className = ' d-flex justify-content-center align-items-center' style ={{ minHeight: "100vh"}}>
-    <a className = 'btn btn-success btn-lg' href={auth_url}>
-        Login
-    </a>
-    </Container> 
+    <div className = 'loginpage'>
+        {/* <strong>Welcome</strong> */}
+        <a className = 'loginbutton' href={auth_url}>
+        LOGIN WITH SPOTIFY
+        </a>
+    </div>
     )
 }
 
