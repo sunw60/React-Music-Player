@@ -22,7 +22,7 @@ import { Avatar } from '@material-ui/core';
 
 
 const spotifyApi = new SpotifyWebApi({
-    clientId:"f84856dbbb614c11a86044b6586840b7",
+    clientId:"clientid",
 })
 
 export default function Dashboard({ token }) {
